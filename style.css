@@ -14,7 +14,6 @@ main {
     width: 80%;
     height: 80%;
     overflow: auto;
-    background-color: #FAFAFA;
     border-radius: 5px;
 }
 
@@ -62,4 +61,17 @@ main {
     border-width: 2px;
     border-color: #FFD277;
     border-radius: 5px;
+}
+
+.inputAndButton {
+    margin-top: 20px;
+}
+
+#messageInput {
+    width: 300px;
+}
+
+#messageInput,
+#send {
+    display: inline;
 }
