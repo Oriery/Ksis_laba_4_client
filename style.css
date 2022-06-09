@@ -15,6 +15,7 @@ main {
     height: 80%;
     overflow: auto;
     border-radius: 5px;
+    margin-bottom: -8px;
 }
 
 .message,
@@ -37,10 +38,11 @@ main {
 
 .nickname {
     display: inline-block;
+    position: sticky;
+    top: 0px;
     background-color: #C6B7F6;
     border-radius: 5px;
     padding: 3px 5px;
-    margin: 3px 0px 0px 3px;
 }
 
 .time {
@@ -58,9 +60,9 @@ main {
 
 .messagesFromOneUser_cont {
     border-style: solid;
-    border-width: 2px;
-    border-color: #FFD277;
+    border: 2px none;
     border-radius: 5px;
+    margin-bottom: 8px;
 }
 
 .inputAndButton {
