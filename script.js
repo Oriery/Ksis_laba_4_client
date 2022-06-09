@@ -2,6 +2,8 @@ var socket;
 var lastMessageNickname = "";
 
 let allMessages = document.querySelector('#allMessages');
+let buttonSend = document.getElementById("send");
+let messageInput = document.getElementById("messageInput");
 
 socket = new WebSocket("ws://localhost:8000")
 
@@ -22,9 +24,19 @@ socket.onclose = () => {
     console.log("Socket closed");
 }
 
-document.getElementById("send").onclick = (e) => {
+buttonSend.onclick = (e) => {
     e.preventDefault();
-    socket.send(document.getElementById("messageInput").value);
+    if (messageInput.value.trim() != "") {
+        socket.send(messageInput.value.trim());
+    }
+
+    messageInput.value = "";
+}
+
+messageInput.onkeydown = (event) => {
+    if (event.keyCode === 13) {
+        buttonSend.click();
+    }
 }
 
 function addMessage(nickname, mess, time) {
