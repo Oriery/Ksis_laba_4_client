@@ -8,7 +8,9 @@ socket.onopen = () => {
 
 socket.onmessage = (e) => {
     console.log("Message received");
-    addMessage("Someone", e.data, "Time");
+    const mes = JSON.parse(e.data)
+    var d = new Date();
+    addMessage(mes.nickname, mes.message, d.toLocaleTimeString());
 }
 
 socket.onclose = () => {
