@@ -1,6 +1,8 @@
 var socket;
 var lastMessageNickname = "";
 
+let allMessages = document.querySelector('#allMessages');
+
 socket = new WebSocket("ws://localhost:8000")
 
 socket.onopen = () => {
@@ -12,6 +14,8 @@ socket.onmessage = (e) => {
     const mes = JSON.parse(e.data)
     var d = new Date();
     addMessage(mes.nickname, mes.message, d.toLocaleTimeString());
+
+    allMessages.scrollTo({ top: allMessages.scrollHeight, behavior: 'smooth' })
 }
 
 socket.onclose = () => {
@@ -31,7 +35,6 @@ function addMessage(nickname, mess, time) {
     cloneInt.querySelector('.message').innerHTML = mess;
 
     if (lastMessageNickname != nickname) {
-        let allMessages = document.querySelector('#allMessages');
         let t_messagesFromOneUser = document.querySelector('#t_messagesFromOneUser');
 
         var cloneExt = t_messagesFromOneUser.content.cloneNode(true);
