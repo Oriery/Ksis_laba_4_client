@@ -1,23 +1,65 @@
-.nickname,
+main {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#allMessages {
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+    background-color: #FAFAFA;
+    border-radius: 5px;
+}
+
 .message,
-.time {
-    display: inline;
-    padding: 5px;
+.time_cont {
+    padding: 7px;
+}
+
+.time_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 2px solid #FFFFFF;
 }
 
 .nickname,
 .time {
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: 100;
 }
 
+.nickname {
+    display: inline-block;
+    background-color: #C6B7F6;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin: 3px 0px 0px 3px;
+}
+
+.time {
+    vertical-align: middle;
+}
+
 .message_cont {
-    margin-left: 20px;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #FFE6B4;
+    border-radius: 5px;
 }
 
 .messagesFromOneUser_cont {
     border-style: solid;
     border-width: 2px;
-    border-color: #FF7373;
+    border-color: #FFD277;
     border-radius: 5px;
 }
