@@ -12,9 +12,23 @@
 </head>
 
 <body>
-    <input type="text" id="message" value="value">
+    <input type="text" id="messageInput" value="value">
     <button id="send">Отправить</button>
-    <div id="messages"></div>
+    <div id="allMessages"></div>
 </body>
+
+<template id="t_messagesFromOneUser">
+    <div class="messagesFromOneUser_cont">
+        <div class="nickname"></div>
+        <div class="messages_cont"></div>
+    </div>
+</template>
+
+<template id="t_message">
+    <div class="message_cont">
+        <div class="message"></div>
+        <div class="time"></div>
+    </div>
+</template>
 
 </html>

@@ -1,4 +1,5 @@
 var socket;
+var lastMessageNickname = "";
 
 socket = new WebSocket("ws://localhost:8000")
 
@@ -19,10 +20,30 @@ socket.onclose = () => {
 
 document.getElementById("send").onclick = (e) => {
     e.preventDefault();
-    socket.send(document.getElementById("message").value);
+    socket.send(document.getElementById("messageInput").value);
 }
 
-function addMessage(who, mess, time) {
-    document.getElementById("messages").innerHTML +=
-        `<div class="message_cont"><div class="time">${time}</div><div class="who">${who}:</div><div class="message">${mess}</div></div>`;
+function addMessage(nickname, mess, time) {
+    let t_message = document.querySelector('#t_message');
+    var cloneInt = t_message.content.cloneNode(true);
+
+    cloneInt.querySelector('.time').innerHTML = time;
+    cloneInt.querySelector('.message').innerHTML = mess;
+
+    if (lastMessageNickname != nickname) {
+        let allMessages = document.querySelector('#allMessages');
+        let t_messagesFromOneUser = document.querySelector('#t_messagesFromOneUser');
+
+        var cloneExt = t_messagesFromOneUser.content.cloneNode(true);
+
+        cloneExt.querySelector('.nickname').innerHTML = nickname;
+        cloneExt.querySelector('.messages_cont').appendChild(cloneInt);
+
+        allMessages.appendChild(cloneExt);
+    } else {
+        document.querySelector('.messagesFromOneUser_cont:last-child')
+            .querySelector('.messages_cont').appendChild(cloneInt);
+    }
+
+    lastMessageNickname = nickname;
 }
